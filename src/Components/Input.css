@@ -1,8 +1,9 @@
-.Input{   height:2.6rem;
-    background-color:#E2E8F0;
-    border:none;
-    border-radius:1.1rem;
-    padding-left:0.6rem;;
-    margin-top:0.8rem;
-    width:100%;
+.Input {
+  height: 2.6rem;
+  background-color: #e2e8f0;
+  border: none;
+  border-radius: 1.1rem;
+  padding-left: 0.6rem;
+  margin-top: 0.8rem;
+  width: 100%;
 }
