@@ -1,15 +1,16 @@
 @font-face {
-    font-family: 'Designer';
+    font-family: Designer;
     src: url('../../public/Fonts/Designer.otf');
 }
+
 @font-face {
     font-family: ComfoortaTiny;
-    src: url(../../public/Fonts/Comfortaa-Light.ttf);
+    src: url("../../public/Fonts/Comfortaa-Light.ttf");
 }
 
 @font-face {
     font-family: ComfoortaMidi;
-    src: url(../../public/Fonts/Comfortaa-Regular.ttf);
+    src: url("../../public/Fonts/Comfortaa-Regular.ttf");
 }
 
 @font-face {
@@ -20,7 +21,7 @@
 @media only screen and (min-width: 1024px) {
 .containerHeader {
     width: 69%;
-    margin: 0 auto 0 auto;
+    margin: 0 auto;
     display: block;
     font-family: ComfoortaMidi;
 }
@@ -66,7 +67,6 @@
 .containerForm {
     display: flex;
     width: 100%;
-
     justify-content: space-between;
     box-sizing: inherit;
     flex-wrap: wrap;
@@ -78,7 +78,7 @@ input {
 
 .submit{
     display:flex;
-    background-color: #ff6600;
+    background-color: #f60;
     border:none;
     border-radius:0.4rem;
     height:2.2rem;
@@ -100,14 +100,15 @@ input {
 .submit:active{
     height:2.1rem;
     width:6.7rem;
-    
+    transform: translate(-0.05rem, 0.05rem);
 }
 
 }
+
 @media only screen and (min-width: 320px) and (max-width: 480px) {
     .containerHeader {
     width: 90%;
-    margin: 0 auto 0 auto;
+    margin: 0 auto;
     display: block;
     font-family: ComfoortaMidi;
 }
@@ -153,7 +154,6 @@ input {
 .containerForm {
     display: flex;
     width: 100%;
-
     justify-content: space-between;
     box-sizing: inherit;
     flex-wrap: wrap;
@@ -162,9 +162,10 @@ input {
 input {
     font-family: ComfoortaMidi;
 }
+
 .submit{
     display:flex;
-    background-color: #ff6600;
+    background-color: #f60;
     border:none;
     border-radius:0.4rem;
     height:2.2rem;
@@ -182,10 +183,11 @@ input {
     background-color: #fda061;
     height:2.1rem;
     width:6.7rem;
-    
+    transform: translate(-0.05rem, 0.05rem);
 }
 
 }
 
 @media only screen and (min-width: 1024px) {}
+
 @media only screen and (min-width: 320px) and (max-width: 480px) {}

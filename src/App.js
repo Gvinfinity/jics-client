@@ -1,7 +1,7 @@
-import React from 'react';
-import FormMain from './Components/FormMain';
-import {ReactComponent as ReactLogo} from './logo.svg';
-import './App.css';
+import React from "react";
+import FormMain from "./Components/FormMain";
+import {ReactComponent as ReactLogo} from "./logo.svg";
+import "./App.css";
 
 const App = () => {
     return (

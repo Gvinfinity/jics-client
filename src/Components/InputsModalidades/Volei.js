@@ -1,8 +1,7 @@
-import React, { useContext, useState } from 'react';
-import Input from '../Input';
-import './Volei.css';
-import { DataContext } from '../FormMain';
-// console.log(DataContext);
+import React, { useState } from "react";
+import Input from "../Input";
+import "./Volei.css";
+import { DataContext } from "../FormMain";
 
 const Volei = () => {
     const [nomedadupla, setnomedadupla] = useState();
@@ -15,8 +14,8 @@ const Volei = () => {
         setDupla(!btnDupla);
         setnomedadupla(btnDupla);
         DataContext._currentValue({
-            Modalidade: 'Volei',
-            SubModalidade: 'Dupla',
+            Modalidade: "volley",
+            SubModalidade: "doubles",
             Valor: btnDupla,
         });
     };
@@ -25,69 +24,67 @@ const Volei = () => {
         setQuarteto(!btnQuarteto);
         setnomequarteto(btnQuarteto);
         DataContext._currentValue({
-            Modalidade: 'Volei',
-            SubModalidade: 'Quarteto',
+            Modalidade: "volley",
+            SubModalidade: "teams",
             Valor: btnQuarteto,
         });
     };
 
     const handlerInputDupla = (event) => {
         DataContext._currentValue({
-            Modalidade: 'Volei',
-            SubModalidade: 'NomeDaDupla',
+            Modalidade: "volley",
+            SubModalidade: "pairId",
             Valor: event.target.value,
         });
-        console.log('oi');
     };
     const handlerInputQuarteto = (event) => {
         DataContext._currentValue({
-            Modalidade: 'Volei',
-            SubModalidade: 'NomeDaEquipe',
+            Modalidade: "volley",
+            SubModalidade: "teamName",
             Valor: event.target.value,
         });
-        console.log('oi');
     };
 
-      return (
-          <div className="volei">
-              <h1 className="header">Vôlei</h1>
-              <div class="divider"></div>
-              <div className="voleidata">
-                  <div>
-                      <input
-                          className="checkbox-round"
-                          type="checkbox"
-                          name="dupla"
-                          value="true"
-                          onClick={clickdupla}
-                      />
-                      <label className="label">Dupla</label>
-                  </div>
-                  <div>
-                      <input
-                          className="checkbox-round"
-                          type="checkbox"
-                          name="quarteto"
-                          value="true"
-                          onClick={clickquarteto}
-                      />
-                      <label className="label">Quarteto</label>
-                  </div>
-              </div>
-              {nomedadupla && (
-                  <Input
-                      onChange={handlerInputDupla}
-                      placeholder={'Matricula da dupla'}
-                  />
-              )}
-              {nomedaquarteto && (
-                  <Input
-                      placeholder={'Nome da Equipe'}
-                      onChange={handlerInputQuarteto}
-                  />
-              )}
-          </div>
-      );
+    return (
+        <div className="volei">
+            <h1 className="header">Vôlei</h1>
+            <div className="divider"></div>
+            <div className="voleidata">
+                <div>
+                    <input
+                        className="checkbox-round"
+                        type="checkbox"
+                        name="dupla"
+                        value="true"
+                        onClick={clickdupla}
+                    />
+                    <label className="label">Dupla</label>
+                </div>
+                <div>
+                    <input
+                        className="checkbox-round"
+                        type="checkbox"
+                        name="quarteto"
+                        value="true"
+                        onClick={clickquarteto}
+                    />
+                    <label className="label">Quarteto</label>
+                </div>
+            </div>
+            {nomedadupla && (
+                <Input
+                    onChange={handlerInputDupla}
+                    placeholder={"Matricula da dupla"}
+                />
+            )}
+            {nomedaquarteto && (
+                <Input
+                    placeholder={"Nome da Equipe"}
+                    onChange={handlerInputQuarteto}
+                />
+            )}
+        </div>
+    );
 };
 
 export default Volei;

@@ -8,7 +8,7 @@ text-align: center;
 .divider{
     height:1px;
     width:100%;
-    background-color: rgb(75, 75, 75);
+    background-color: rgb(75 75 75);
 }
 
 .badmintondata {
@@ -31,7 +31,7 @@ text-align: center;
     vertical-align: middle;
     border: 1px solid #ddd;
     appearance: none;
-    -webkit-appearance: none;
+    appearance: none;
     outline: none;
     cursor: pointer;
 }

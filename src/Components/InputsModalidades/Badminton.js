@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
-import Input from '../Input';
-import { DataContext } from '../FormMain';
+import React, { useState } from "react";
+import Input from "../Input";
+import { DataContext } from "../FormMain";
 
-import './Badminton.css';
+import "./Badminton.css";
 
 const Badminton = () => {
     const [nomedadupla, setnomedupla] = useState();
@@ -13,8 +13,8 @@ const Badminton = () => {
     const clickindividual = () => {
         setIndividual(!btnIndividual);
         DataContext._currentValue({
-            Modalidade: 'Badminton',
-            SubModalidade: 'Individual',
+            Modalidade: "badminton",
+            SubModalidade: "singles",
             Valor: btnIndividual,
         });
     };
@@ -23,15 +23,15 @@ const Badminton = () => {
         setDupla(!btnDupla);
         setnomedupla(btnDupla);
         DataContext._currentValue({
-            Modalidade: 'Badminton',
-            SubModalidade: 'Dupla',
+            Modalidade: "badminton",
+            SubModalidade: "doubles",
             Valor: btnDupla,
         });
     };
     const handlerInputDupla = (event) => {
         DataContext._currentValue({
-            Modalidade: 'Badminton',
-            SubModalidade: 'NomeDaDupla',
+            Modalidade: "badminton",
+            SubModalidade: "pairId",
             Valor: event.target.value,
         });
     };
@@ -39,7 +39,7 @@ const Badminton = () => {
     return (
         <div>
             <h1 className="header">Badminton</h1>
-            <div class="divider"></div>
+            <div className="divider"></div>
             <div className="badmintondata">
                 <div>
                     <input
@@ -64,7 +64,7 @@ const Badminton = () => {
             </div>
             {nomedadupla && (
                 <Input
-                    placeholder={'Nome da Dupla'}
+                    placeholder={"Nome da Dupla"}
                     onChange={handlerInputDupla}
                 />
             )}

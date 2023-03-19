@@ -1,5 +1,6 @@
-import React from 'react';
-import './Input.css';
+/* eslint-disable react/prop-types */
+import React from "react";
+import "./Input.css";
 
 const Input = (props) => {
     return (

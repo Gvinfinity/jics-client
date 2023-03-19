@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
-import './Modalidades.css';
-import Jogos from '../Context/Jogos';
+/* eslint-disable react/prop-types */
+import React, { useState } from "react";
+import "./Modalidades.css";
+import Jogos from "../Context/Jogos";
 
 const Modalidades = (props) => {
     let [stateVolei, setVolei] = useState(false);
@@ -65,33 +66,21 @@ const Modalidades = (props) => {
         setBadminton(!stateBadminton);
         stateBadminton = !stateBadminton;
         enviar();
-    }
+    };
 
     const enviar = () => {
         setTimeout(() => {
             props.setar({
-                Volei: stateVolei,
-                Futebol: stateFutebol,
-                Queimada: stateQueimada,
-                Tenis: stateTenis,
-                Xadrez: stateXadrez,
-                Domino: stateDomino,
-                JogosEle: stateJogosEle,
-                Atletismo: stateAtletismo,
-                Badminton: stateBadminton,
+                volley: stateVolei,
+                soccer: stateFutebol,
+                dodgeball: stateQueimada,
+                tableTennis: stateTenis,
+                chess: stateXadrez,
+                domino: stateDomino,
+                electronic: stateJogosEle,
+                athletics: stateAtletismo,
+                badminton: stateBadminton,
             });
-            // console.log({
-            //     titulo: 'o certo',
-            //     Volei: stateVolei,
-            //     Futebol: stateFutebol,
-            //     Queimada: stateQueimada,
-            //     Tenis: stateTenis,
-            //     Xadrez: stateXadrez,
-            //     Domino: stateDomino,
-            //     JogosEle: stateJogosEle,
-            //     Atletismo: stateAtletismo,
-            //     Badminton: stateBadminton,
-            // });
         }, 200);
     };
 
@@ -103,8 +92,8 @@ const Modalidades = (props) => {
                         <span className="checkbox ">
                             <i
                                 className={
-                                    (stateVolei && '  fa-solid fa-check ') ||
-                                    '  fa-solid fa-check check-icon '
+                                    (stateVolei && "  fa-solid fa-check ") ||
+                                    "  fa-solid fa-check check-icon "
                                 }
                             ></i>
                         </span>
@@ -114,8 +103,8 @@ const Modalidades = (props) => {
                         <span className="checkbox">
                             <i
                                 className={
-                                    (stateFutebol && '  fa-solid fa-check ') ||
-                                    '  fa-solid fa-check check-icon '
+                                    (stateFutebol && "  fa-solid fa-check ") ||
+                                    "  fa-solid fa-check check-icon "
                                 }
                             ></i>
                         </span>
@@ -125,8 +114,8 @@ const Modalidades = (props) => {
                         <span className="checkbox">
                             <i
                                 className={
-                                    (stateQueimada && '  fa-solid fa-check ') ||
-                                    '  fa-solid fa-check check-icon '
+                                    (stateQueimada && "  fa-solid fa-check ") ||
+                                    "  fa-solid fa-check check-icon "
                                 }
                             ></i>
                         </span>
@@ -136,8 +125,8 @@ const Modalidades = (props) => {
                         <span className="checkbox">
                             <i
                                 className={
-                                    (stateTenis && '  fa-solid fa-check ') ||
-                                    '  fa-solid fa-check check-icon '
+                                    (stateTenis && "  fa-solid fa-check ") ||
+                                    "  fa-solid fa-check check-icon "
                                 }
                             ></i>
                         </span>
@@ -147,8 +136,8 @@ const Modalidades = (props) => {
                         <span className="checkbox">
                             <i
                                 className={
-                                    (stateXadrez && '  fa-solid fa-check ') ||
-                                    '  fa-solid fa-check check-icon '
+                                    (stateXadrez && "  fa-solid fa-check ") ||
+                                    "  fa-solid fa-check check-icon "
                                 }
                             ></i>
                         </span>
@@ -158,8 +147,8 @@ const Modalidades = (props) => {
                         <span className="checkbox">
                             <i
                                 className={
-                                    (stateDomino && '  fa-solid fa-check ') ||
-                                    '  fa-solid fa-check check-icon '
+                                    (stateDomino && "  fa-solid fa-check ") ||
+                                    "  fa-solid fa-check check-icon "
                                 }
                             ></i>
                         </span>
@@ -169,8 +158,8 @@ const Modalidades = (props) => {
                         <span className="checkbox">
                             <i
                                 className={
-                                    (stateJogosEle && '  fa-solid fa-check ') ||
-                                    '  fa-solid fa-check check-icon '
+                                    (stateJogosEle && "  fa-solid fa-check ") ||
+                                    "  fa-solid fa-check check-icon "
                                 }
                             ></i>
                         </span>
@@ -180,8 +169,8 @@ const Modalidades = (props) => {
                         <span className="checkbox">
                             <i
                                 className={
-                                    (stateAtletismo && '  fa-solid fa-check ') ||
-                                    '  fa-solid fa-check check-icon '
+                                    (stateAtletismo && "  fa-solid fa-check ") ||
+                                    "  fa-solid fa-check check-icon "
                                 }
                             ></i>
                         </span>
@@ -191,8 +180,8 @@ const Modalidades = (props) => {
                         <span className="checkbox">
                             <i
                                 className={
-                                    (stateBadminton && '  fa-solid fa-check ') ||
-                                    '  fa-solid fa-check check-icon '
+                                    (stateBadminton && "  fa-solid fa-check ") ||
+                                    "  fa-solid fa-check check-icon "
                                 }
                             ></i>
                         </span>

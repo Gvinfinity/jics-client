@@ -1,15 +1,16 @@
 @font-face{
-    font-family: 'Designer';
+    font-family: Designer;
     src: url('../../public/Fonts/Designer.otf')
 }
+
 @font-face {
     font-family: ComfoortaTiny;
-    src: url(../../public/Fonts/Comfortaa-Light.ttf);
+    src: url("../../public/Fonts/Comfortaa-Light.ttf");
 }
 
 @font-face {
     font-family: ComfoortaMidi;
-    src: url(../../public/Fonts/Comfortaa-Regular.ttf);
+    src: url("../../public/Fonts/Comfortaa-Regular.ttf");
     
 }
 
@@ -45,6 +46,7 @@
     margin-left:0.6rem;;
     
 }
+
 .item{
     margin-top:0.6rem;
     padding: 0.6rem 1rem;
@@ -57,15 +59,16 @@
     height:0.8rem;
     margin-left:12px;
     border:none;
+
     /* margin-top:0.6rem; */
     
     cursor:pointer;
     
 
 }
+
 .checkbox{
-  
-    border:1.5px solid rgb(0, 0, 0);
+    border:1.5px solid rgb(0 0 0);
     border-radius:4px;
     padding: 2px;
 }
