@@ -143,7 +143,7 @@ const Atletismo = () => {
                 </div>
             </div>
             {nomedadupla && (
-                <Input placeholder={"Nome da Dupla"} onChange={handlerInput} />
+                <Input placeholder={"Matrícula da Dupla"} onChange={handlerInput} />
             )}
         </div>
     );

@@ -15,11 +15,12 @@ let Data = "Sem dado";
 const dados = {
     name: "",
     email: "",
+    id: "",
     course: "",
     term: "",
     learningModel: "",
     sex: "",
-    sports: {
+    subscription: {
         volley: {
             doubles: false,
             teams: false,
@@ -38,7 +39,7 @@ const dados = {
         },
 
         tableTennis: {
-            singles: false,
+            single: false,
             doubles: false,
             pairId: "",
         },
@@ -64,7 +65,7 @@ const dados = {
             shotPut: false,
         },
         badminton: {
-            singles: false,
+            single: false,
             doubles: false,
             pairId: "",
         },
@@ -117,7 +118,7 @@ const styles = {
 
 export const DataContext = createContext((newData) => {
     const { Modalidade, SubModalidade, Valor } = newData;
-    dados.sports[Modalidade][SubModalidade] = Valor;
+    dados.subscription[Modalidade][SubModalidade] = Valor;
 });
 
 const FormMain = () => {
@@ -183,10 +184,10 @@ const FormMain = () => {
             electronic: objJogos.electronic,
             athletics: objJogos.athletics,
         });
-        dados.sports.soccer.teams = objJogos.soccer;
-        dados.sports.dodgeball.teams = objJogos.dodgeball;
-        dados.sports.chess = objJogos.chess;
-        dados.sports.domino.doubles = objJogos.domino;
+        dados.subscription.soccer.teams = objJogos.soccer;
+        dados.subscription.dodgeball.teams = objJogos.dodgeball;
+        dados.subscription.chess = objJogos.chess;
+        dados.subscription.domino.doubles = objJogos.domino;
     };
 
     const save = (event) => {
@@ -199,7 +200,12 @@ const FormMain = () => {
     };
 
     const submit = () => {
-        console.log(dados);
+        fetch("http://localhost:8080/register",{
+            method: "POST",
+            mode: "cors",
+            body: JSON.stringify(dados),
+            headers: new Headers({"Content-Type": "application/json"})
+        });
     };
 
     return (
@@ -216,6 +222,12 @@ const FormMain = () => {
                     placeholder="Email"
                     onChange={save}
                     name="email"
+                />
+                <input
+                    className="mainId formField"
+                    placeholder="Matrícula"
+                    onChange={save}
+                    name="id"
                 />
                 <div className="containerForm">
                     <Select

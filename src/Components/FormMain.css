@@ -28,6 +28,7 @@
 
   .mainName,
   .mainEmail,
+  .mainId,
   .modalidade {
     width: 100%;
   }
@@ -113,6 +114,7 @@
 
   .mainName,
   .mainEmail,
+  .mainId,
   .modalidade {
     width: 100%;
   }

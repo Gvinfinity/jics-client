@@ -14,7 +14,7 @@ const Badminton = () => {
         setIndividual(!btnIndividual);
         DataContext._currentValue({
             Modalidade: "badminton",
-            SubModalidade: "singles",
+            SubModalidade: "single",
             Valor: btnIndividual,
         });
     };
@@ -64,7 +64,7 @@ const Badminton = () => {
             </div>
             {nomedadupla && (
                 <Input
-                    placeholder={"Nome da Dupla"}
+                    placeholder={"Matrícula da Dupla"}
                     onChange={handlerInputDupla}
                 />
             )}
