@@ -10,6 +10,8 @@ import Badminton from "./InputsModalidades/Badminton";
 import Atletismo from "./InputsModalidades/Atletismo";
 import JogosEle from "./InputsModalidades/JogosEle";
 import Select from "react-select";
+import verifyInput from "../Utils/verifyInput";
+
 let Data = "Sem dado";
 
 const dados = {
@@ -116,12 +118,17 @@ const styles = {
     }),
 };
 
+const requiredFields = ["name", "email", "id", "course", "term", "learningModel", "sex"];
+
 export const DataContext = createContext((newData) => {
     const { Modalidade, SubModalidade, Valor } = newData;
     dados.subscription[Modalidade][SubModalidade] = Valor;
 });
 
 const FormMain = () => {
+
+    const [isFormFilled, setIsFormFilled] = useState(false);
+
     const dropdowns = {
         curso: {
             selectedOption: false,
@@ -147,6 +154,7 @@ const FormMain = () => {
 
     let clicked = false;
     const [btnModalidade, setModalidade] = useState(clicked);
+
     const [jogos, setjogos] = useState({
         titulo: "o errado aqui",
         volley: false,
@@ -193,6 +201,7 @@ const FormMain = () => {
     const save = (event) => {
         const { name, value } = event.target || event;
         dados[name] = value;
+        setIsFormFilled(requiredFields.every((value) => dados[value] != ""));
     };
 
     const eventClick = () => {
@@ -200,43 +209,79 @@ const FormMain = () => {
     };
 
     const submit = () => {
-        fetch("http://localhost:8080/register",{
-            method: "POST",
-            mode: "cors",
-            body: JSON.stringify(dados),
-            headers: new Headers({"Content-Type": "application/json"})
-        });
+        
+        const unfilled = verifyInput(dados, requiredFields);
+        const l = document.getElementsByClassName("wrong");
+
+        if (l.length > 0) {
+            const length = l.length;
+            for ( let i = 0; i < length; i++ ) {
+                l[0].classList.remove("wrong");
+            }
+        }
+
+        if(unfilled.length === 0) {
+            const response = fetch("http://localhost:8080/register",{
+                method: "POST",
+                mode: "cors",
+                body: JSON.stringify(dados),
+                headers: new Headers({"Content-Type": "application/json"})
+            });
+
+            console.log(response);
+        } else {
+            for ( let e in unfilled) {
+                let unfilledField = document.getElementById(unfilled[e].concat("Main"));
+                if (["course", "sex", "term", "learningModel"].indexOf(unfilled[e]) >= 0) {
+                    unfilledField = unfilledField.getElementsByTagName("div")[0];
+                }
+
+                unfilledField.classList.add("shake", "wrong");
+                setTimeout(() => {
+                    unfilledField.classList.remove("shake");
+                }, 500); 
+            }
+        }
+        
     };
 
     return (
         <DataContext.Provider value={Data}>
             <form className="containerHeader">
                 <input
-                    className="mainName formField"
+                    className="formField"
+                    id="nameMain"
                     placeholder="Nome"
                     onChange={save}
                     name="name"
+                    required
                 />
                 <input
-                    className="mainEmail formField"
+                    className="formField"
+                    id="emailMain"
                     placeholder="Email"
                     onChange={save}
                     name="email"
+                    required
                 />
                 <input
-                    className="mainId formField"
+                    className="formField"
+                    id="idMain"
                     placeholder="Matrícula"
                     onChange={save}
                     name="id"
+                    required
                 />
                 <div className="containerForm">
                     <Select
                         defaultValue={dropdowns.curso.selectedOption}
                         onChange={(dropdowns.curso.setSelectedOption, save)}
                         options={dropdowns.curso.options}
-                        className="mainCourse flexItem"
+                        className="flexItem"
+                        id="courseMain"
                         placeholder="Curso"
                         styles={styles}
+                        required
                         hideSelectedOptions
                     />
                     <Select
@@ -245,7 +290,9 @@ const FormMain = () => {
                         options={dropdowns.modelo.options}
                         styles={styles}
                         hideSelectedOptions
-                        className="mainModelo flexItem"
+                        required
+                        className="flexItem"
+                        id="learningModelMain"
                         placeholder="Modelo de Ensino"
                     />
                     <div className="break"></div>
@@ -255,7 +302,9 @@ const FormMain = () => {
                         options={dropdowns.periodo.options}
                         styles={styles}
                         hideSelectedOptions
-                        className="mainPeriodo flexItem"
+                        required
+                        className="flexItem"
+                        id="termMain"
                         placeholder="Período"
                     />
                     <Select
@@ -264,7 +313,9 @@ const FormMain = () => {
                         options={dropdowns.sexo.options}
                         styles={styles}
                         hideSelectedOptions
-                        className="mainSexo flexItem"
+                        required
+                        className="flexItem"
+                        id="sexMain"
                         placeholder="Sexo Biológico"
                     />
                 </div>
@@ -285,7 +336,7 @@ const FormMain = () => {
                 {certo.electronic && <JogosEle />}
                 {certo.athletics && <Atletismo />}
                 {certo.badminton && <Badminton />}
-                <button type="button" className="submit" onClick={submit}>
+                <button type="button" disabled={!isFormFilled} className="submit" onClick={submit}>
                     Concluir
                 </button>
             </form>

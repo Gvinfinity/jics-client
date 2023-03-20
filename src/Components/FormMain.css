@@ -21,173 +21,119 @@
 @media only screen and (min-width: 1024px) {
   .containerHeader {
     width: 69%;
-    margin: 0 auto;
-    display: block;
-    font-family: ComfoortaMidi;
-  }
-
-  .mainName,
-  .mainEmail,
-  .mainId,
-  .modalidade {
-    width: 100%;
-  }
-
-  .modalidade {
-    padding-right: 2px;
-    width: 100%;
-    cursor: pointer;
-    text-align: left;
-    font-family: ComfoortaBold;
-    color: #7a7a7a;
-  }
-
-  .modalidade:active {
-    border: none;
-  }
-
-  .formField {
-    box-sizing: inherit;
-    height: 2.6rem;
-    background-color: #e2e8f0;
-    border: none;
-    border-radius: 1.1rem;
-    padding-left: 0.6rem;
-    margin-top: 0.8rem;
-  }
-
-  .break {
-    flex-basis: 100%;
-    height: 0;
-  }
-
-  .flexItem {
-    width: 45%;
-  }
-
-  .containerForm {
-    display: flex;
-    width: 100%;
-    justify-content: space-between;
-    box-sizing: inherit;
-    flex-wrap: wrap;
-  }
-
-  input {
-    font-family: ComfoortaMidi;
-  }
-
-  .submit {
-    display: flex;
-    background-color: #f60;
-    border: none;
-    border-radius: 0.4rem;
-    height: 2.2rem;
-    width: 6.8rem;
-    margin: 4rem 0 0 auto;
-    font-family: ComfoortaMidi;
-    font-size: 1.1rem;
-    color: #3f3f3f;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .submit:hover {
-    background-color: #fda061;
-    cursor: pointer;
-  }
-
-  .submit:active {
-    height: 2.1rem;
-    width: 6.7rem;
-    transform: translate(-0.05rem, 0.05rem);
   }
 }
 
 @media only screen and (min-width: 320px) and (max-width: 480px) {
-  .containerHeader {
-    width: 90%;
-    margin: 0 auto;
-    display: block;
-    font-family: ComfoortaMidi;
-  }
-
-  .mainName,
-  .mainEmail,
-  .mainId,
-  .modalidade {
-    width: 100%;
-  }
-
-  .modalidade {
-    padding-right: 2px;
-    width: 100%;
-    cursor: pointer;
-    text-align: left;
-    font-family: ComfoortaBold;
-    color: #7a7a7a;
-  }
-
-  .modalidade:active {
-    border: none;
-  }
-
-  .formField {
-    box-sizing: inherit;
-    height: 2.6rem;
-    background-color: #e2e8f0;
-    border: none;
-    border-radius: 1.1rem;
-    padding-left: 0.6rem;
-    margin-top: 0.8rem;
-  }
-
-  .break {
-    flex-basis: 100%;
-    height: 0;
-  }
-
-  .flexItem {
-    width: 45%;
-  }
-
-  .containerForm {
-    display: flex;
-    width: 100%;
-    justify-content: space-between;
-    box-sizing: inherit;
-    flex-wrap: wrap;
-  }
-
-  input {
-    font-family: ComfoortaMidi;
-  }
-
-  .submit {
-    display: flex;
-    background-color: #f60;
-    border: none;
-    border-radius: 0.4rem;
-    height: 2.2rem;
-    width: 6.8rem;
-    margin: 4rem 0 0 auto;
-    font-family: ComfoortaMidi;
-    font-size: 1.1rem;
-    color: #3f3f3f;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .submit:active {
-    background-color: #fda061;
-    height: 2.1rem;
-    width: 6.7rem;
-    transform: translate(-0.05rem, 0.05rem);
-  }
 }
 
-@media only screen and (min-width: 1024px) {
+.containerHeader {
+  width: 90%;
+  margin: 0 auto;
+  display: block;
+  font-family: ComfoortaMidi;
 }
 
-@media only screen and (min-width: 320px) and (max-width: 480px) {
+#nameMain,
+#emailMain,
+#idMain,
+.modalidade {
+  width: 100%;
+}
+
+.modalidade {
+  padding-right: 2px;
+  cursor: pointer;
+  text-align: left;
+  font-family: ComfoortaBold;
+  color: #7a7a7a;
+}
+
+.modalidade:active {
+  border: none;
+}
+
+.formField {
+  box-sizing: inherit;
+  height: 2.6rem;
+  background-color: #e2e8f0;
+  border: none;
+  border-radius: 1.1rem;
+  padding-left: 0.6rem;
+  margin-top: 0.8rem;
+}
+
+.break {
+  flex-basis: 100%;
+  height: 0;
+}
+
+.flexItem {
+  width: 45%;
+}
+
+.containerForm {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  box-sizing: inherit;
+  flex-wrap: wrap;
+}
+
+input {
+  font-family: ComfoortaMidi;
+}
+
+.submit {
+  display: flex;
+  background-color: #f60;
+  border: none;
+  border-radius: 0.4rem;
+  height: 2.2rem;
+  width: 6.8rem;
+  margin: 4rem 0 0 auto;
+  font-family: ComfoortaMidi;
+  font-size: 1.1rem;
+  color: #3f3f3f;
+  align-items: center;
+  justify-content: center;
+}
+
+.submit:active:not(:disabled) {
+  background-color: #fda061;
+  height: 2.1rem;
+  width: 6.7rem;
+  transform: translate(-0.05rem, 0.05rem);
+}
+
+.submit:hover {
+  background-color: #fda061;
+  cursor: pointer;
+}
+
+.submit:disabled {
+  background-color: #ecb189;
+  cursor: default;
+}
+
+.shake {
+  animation: shake 0.3s !important;
+}
+
+.wrong {
+  border: 1px solid red !important;
+}
+
+@keyframes shake {
+  0% { transform: translate(1px, 1px) rotate(0deg); }
+  10% { transform: translate(-1px, -2px) rotate(-0.5deg); }
+  20% { transform: translate(-3px, 0px) rotate(0.5deg); }
+  30% { transform: translate(3px, 2px) rotate(0deg); }
+  40% { transform: translate(1px, -1px) rotate(0.5deg); }
+  50% { transform: translate(-1px, 2px) rotate(-0.5deg); }
+  60% { transform: translate(-3px, 1px) rotate(0deg); }
+  70% { transform: translate(3px, 1px) rotate(-0.5deg); }
+  80% { transform: translate(-1px, -1px) rotate(0.5deg); }
+  90% { transform: translate(1px, 2px) rotate(0deg); }
+  100% { transform: translate(1px, -2px) rotate(-0.5deg); }
 }
