@@ -316,7 +316,7 @@ const FormMain = () => {
                         required
                         className="flexItem"
                         id="sexMain"
-                        placeholder="Sexo Biológico"
+                        placeholder="Naipe"
                     />
                 </div>
                 <button
