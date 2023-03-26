@@ -65,6 +65,7 @@ const Tenis = () => {
             </div>
             {nomedadupla && (
                 <Input
+                    id="pairIdTableTennis"
                     placeholder={"Matrícula da Dupla"}
                     onChange={handlerInputDupla}
                 />

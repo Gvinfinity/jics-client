@@ -17,7 +17,7 @@ const Domino = () => {
         <div>
             <h1 className="header">Domino</h1>
             <div className="divider"></div>
-            <Input placeholder="Matrícula da Dupla" onChange={handlerInputDupla} />
+            <Input id="pairIdDomino" placeholder="Matrícula da Dupla" onChange={handlerInputDupla} />
         </div>
     );
 };

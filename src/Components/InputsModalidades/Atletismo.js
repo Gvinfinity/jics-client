@@ -143,7 +143,7 @@ const Atletismo = () => {
                 </div>
             </div>
             {nomedadupla && (
-                <Input placeholder={"Matrícula da Dupla"} onChange={handlerInput} />
+                <Input id="pairIdRelay" placeholder={"Matrícula da Dupla"} onChange={handlerInput} />
             )}
         </div>
     );

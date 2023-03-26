@@ -43,3 +43,11 @@
 .volei {
   margin-top: 4rem;
 }
+
+.subdiv {
+  margin-top: 1.5rem;
+  text-align: left;
+  font-size: 1rem;
+  text-decoration: underline;
+  text-underline-offset: 0.5rem;
+}

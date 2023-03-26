@@ -3,9 +3,11 @@ import React from "react";
 import "./Input.css";
 
 const Input = (props) => {
+    
     return (
         <input
-            className="Input"
+            id={props.id}
+            className={`Input ${props.className}`}
             placeholder={props.placeholder}
             onChange={props.onChange}
         />

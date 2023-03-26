@@ -12,7 +12,7 @@ const Modalidades = (props) => {
     let [stateDomino, setDomino] = useState(false);
     let [stateJogosEle, setJogosEle] = useState(false);
     let [stateAtletismo, setAtletismo] = useState(false);
-    let [stateBadminton, setBadminton] = useState(false);
+    // let [stateBadminton, setBadminton] = useState(false);
 
 
     const clickVolei = () => {
@@ -62,11 +62,12 @@ const Modalidades = (props) => {
         stateAtletismo = !stateAtletismo;
         enviar();
     };
-    const clickBadminton = () => {
-        setBadminton(!stateBadminton);
-        stateBadminton = !stateBadminton;
-        enviar();
-    };
+ 
+    // const clickBadminton = () => {
+    //     setBadminton(!stateBadminton);
+    //     stateBadminton = !stateBadminton;
+    //     enviar();
+    // };
 
     const enviar = () => {
         setTimeout(() => {
@@ -79,7 +80,7 @@ const Modalidades = (props) => {
                 domino: stateDomino,
                 electronic: stateJogosEle,
                 athletics: stateAtletismo,
-                badminton: stateBadminton,
+                // badminton: stateBadminton,
             });
         }, 200);
     };
@@ -176,7 +177,7 @@ const Modalidades = (props) => {
                         </span>
                         <span className="itemText">Atletismo</span>
                     </li>
-                    <li className="item" onClick={clickBadminton}>
+                    {/* <li className="item" onClick={clickBadminton}>
                         <span className="checkbox">
                             <i
                                 className={
@@ -186,7 +187,7 @@ const Modalidades = (props) => {
                             ></i>
                         </span>
                         <span className="itemText">Badminton</span>
-                    </li>
+                    </li> */}
                 </ul>
             )}
         </Jogos.Provider>

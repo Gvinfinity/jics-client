@@ -6,7 +6,7 @@ import "./Atletismo.css";
 const JogosEle = () => {
     let clicked = true;
     const [btnFIFA23, setFIFA23] = useState(clicked);
-    const [btnTetris, setTetris] = useState(clicked);
+    // const [btnTetris, setTetris] = useState(clicked);
     const [btnJustDance, setJustDance] = useState(clicked);
 
     const clickFIFA23 = () => {
@@ -18,14 +18,14 @@ const JogosEle = () => {
         });
     };
 
-    const clickTetris = () => {
-        setTetris(!btnTetris);
-        DataContext._currentValue({
-            Modalidade: "electronic",
-            SubModalidade: "Tetris",
-            Valor: btnTetris,
-        });
-    };
+    // const clickTetris = () => {
+    //     setTetris(!btnTetris);
+    //     DataContext._currentValue({
+    //         Modalidade: "electronic",
+    //         SubModalidade: "Tetris",
+    //         Valor: btnTetris,
+    //     });
+    // };
 
     const clickJustDance = () => {
         setJustDance(!btnJustDance);
@@ -51,7 +51,7 @@ const JogosEle = () => {
                     />
                     <label className="label">FIFA23</label>
                 </div>
-                <div>
+                {/* <div>
                     <input
                         className="checkbox-round"
                         type="checkbox"
@@ -60,7 +60,7 @@ const JogosEle = () => {
                         onClick={clickTetris}
                     />
                     <label className="label">Tetris</label>
-                </div>
+                </div> */}
                 <div>
                     <input
                         className="checkbox-round"

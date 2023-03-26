@@ -1,16 +1,21 @@
 import React, { useState, createContext } from "react";
-import "./FormMain.css";
+import { ToastContainer, toast } from "react-toastify";
+import Select from "react-select";
+
 import Modalidades from "./Modalidades";
 import Volei from "./InputsModalidades/Volei";
 import Futebol from "./InputsModalidades/Futebol";
 import Queimada from "./InputsModalidades/Queimada";
 import Tenis from "./InputsModalidades/Tenis";
 import Domino from "./InputsModalidades/Domino";
-import Badminton from "./InputsModalidades/Badminton";
+// import Badminton from "./InputsModalidades/Badminton";
 import Atletismo from "./InputsModalidades/Atletismo";
 import JogosEle from "./InputsModalidades/JogosEle";
-import Select from "react-select";
+
 import verifyInput from "../Utils/verifyInput";
+
+import "react-toastify/dist/ReactToastify.css";
+import "./FormMain.css";
 
 let Data = "Sem dado";
 
@@ -28,16 +33,37 @@ const dados = {
             teams: false,
             pairId: "",
             teamName: "",
+            teamMate1Id: "",
+            teamMate2Id: "",
+            teamMate3Id: "",
         },
 
         soccer: {
             teams: false,
             teamName: "",
+            teamMate1Id: "",
+            teamMate2Id: "",
+            teamMate3Id: "",
+            teamMate4Id: "",
+            teamReserve1: "",
+            teamReserve2: "",
+            teamReserve3: "",
+            teamReserve4: "",
+            teamReserve5: "",
         },
 
         dodgeball: {
             teams: false,
             teamName: "",
+            teamMate1Id: "",
+            teamMate2Id: "",
+            teamMate3Id: "",
+            teamMate4Id: "",
+            teamMate5Id: "",
+            teamMate6Id: "",
+            teamMate7Id: "",
+            teamMate8Id: "",
+            teamMate9Id: "",
         },
 
         tableTennis: {
@@ -53,7 +79,7 @@ const dados = {
 
         electronic: {
             FIFA23: false,
-            Tetris: false,
+            // Tetris: false,
             JustDance: false,
         },
 
@@ -66,11 +92,11 @@ const dados = {
             highJump: false,
             shotPut: false,
         },
-        badminton: {
-            single: false,
-            doubles: false,
-            pairId: "",
-        },
+        // badminton: {
+        //     single: false,
+        //     doubles: false,
+        //     pairId: "",
+        // },
     },
 };
 
@@ -162,7 +188,7 @@ const FormMain = () => {
         dodgeball: false,
         tableTennis: false,
         chess: false,
-        badminton: false,
+        // badminton: false,
         domino: false,
         electronic: false,
         athletics: false,
@@ -174,7 +200,7 @@ const FormMain = () => {
         dodgeball: jogos.dodgeball,
         tableTennis: jogos.tableTennis,
         chess: jogos.chess,
-        badminton: jogos.badminton,
+        // badminton: jogos.badminton,
         domino: jogos.domino,
         electronic: jogos.electronic,
         athletics: jogos.athletics,
@@ -187,7 +213,7 @@ const FormMain = () => {
             dodgeball: objJogos.dodgeball,
             tableTennis: objJogos.tableTennis,
             chess: objJogos.chess,
-            badminton: objJogos.badminton,
+            // badminton: objJogos.badminton,
             domino: objJogos.domino,
             electronic: objJogos.electronic,
             athletics: objJogos.athletics,
@@ -208,7 +234,7 @@ const FormMain = () => {
         setModalidade(!btnModalidade);
     };
 
-    const submit = () => {
+    const submit = async () => {
         
         const unfilled = verifyInput(dados, requiredFields);
         const l = document.getElementsByClassName("wrong");
@@ -220,19 +246,59 @@ const FormMain = () => {
             }
         }
 
-        if(unfilled.length === 0) {
-            const response = fetch("http://localhost:8080/register",{
-                method: "POST",
-                mode: "cors",
-                body: JSON.stringify(dados),
-                headers: new Headers({"Content-Type": "application/json"})
-            });
+        const teamSports = [
+            dados.subscription.volley.teams && certo.volley,
+            dados.subscription.volley.doubles && certo.volley,
+            dados.subscription.tableTennis.doubles && certo.tableTennis,
+            dados.subscription.soccer.teams,
+            dados.subscription.dodgeball.teams,
+        ].reduce((memory, value) => memory + value, 0);
 
-            console.log(response);
+        const individualSports = [
+            dados.subscription.tableTennis.single && certo.tableTennis,
+            certo.athletics,
+            certo.electronic,
+            dados.subscription.chess,
+            dados.subscription.domino.doubles,
+        ].reduce((memory, value) => memory + value, 0);
+
+        if(unfilled.length === 0) {
+            if ( teamSports > 3 ) {
+                toast.error("O número de esportes coletivos excedeu o limite de 3, por favor remova!");
+            } else if ( teamSports + individualSports > 6 ) {
+                toast.error("O número de esportes total excedeu o limite de 6, por favor remova!");
+            } else {
+                const response = await toast.promise(
+                    fetch("http://localhost:8080/register",{
+                        method: "POST",
+                        mode: "cors",
+                        body: JSON.stringify(dados),
+                        headers: new Headers({"Content-Type": "application/json"})
+                    }),
+                    {
+                        pending: "Adicionando inscrição...",
+                        error: "Incapaz de conectar ao servidor, tente novamente mais tarde!"
+                    }
+                );
+    
+                const body = await response.json();
+    
+                if ( body.error.code == "_id_") {
+                    toast.error( "O estudante já está inscrito!" );
+                    const studentIdField = document.getElementById("idMain");
+                    studentIdField.classList.add("shake", "wrong");
+                } else if ( body.error.code == "students_email_key") {
+                    toast.error( "O estudante já está inscrito!" );
+                    const studentIdField = document.getElementById("emailMain");
+                    studentIdField.classList.add("shake", "wrong");
+                }
+            }
+            
+
         } else {
             for ( let e in unfilled) {
-                let unfilledField = document.getElementById(unfilled[e].concat("Main"));
-                if (["course", "sex", "term", "learningModel"].indexOf(unfilled[e]) >= 0) {
+                let unfilledField = document.getElementById(unfilled[e]);
+                if (["courseMain", "sexMain", "termMain", "learningModelMain"].indexOf(unfilled[e]) >= 0) {
                     unfilledField = unfilledField.getElementsByTagName("div")[0];
                 }
 
@@ -241,6 +307,7 @@ const FormMain = () => {
                     unfilledField.classList.remove("shake");
                 }, 500); 
             }
+            toast.error("Existem campos inválidos, por favor confira as informações!");
         }
         
     };
@@ -335,7 +402,18 @@ const FormMain = () => {
                 {certo.domino && <Domino />}
                 {certo.electronic && <JogosEle />}
                 {certo.athletics && <Atletismo />}
-                {certo.badminton && <Badminton />}
+                {/* {certo.badminton && <Badminton />} */}
+                
+                <ToastContainer position="top-right"
+                    autoClose={5000}
+                    hideProgressBar={false}
+                    newestOnTop={true}
+                    closeOnClick
+                    rtl={false}
+                    pauseOnFocusLoss
+                    draggable
+                    pauseOnHover
+                    theme="colored"/>
                 <button type="button" disabled={!isFormFilled} className="submit" onClick={submit}>
                     Concluir
                 </button>
