@@ -89,12 +89,13 @@ const Volei = () => {
             {nomedaquarteto && (
                 <div>
                     <h2 className="subdiv">Quarteto</h2>
+                    <p>Preencha as matrículas dos demais membros do time</p>
 
                     <Input className="teamName" id="teamNameVolley" placeholder="Nome da Equipe" onChange={handlerQuarteto}/>
 
-                    <Input className="teamMates" id="teamMateVolley1Id" placeholder="Matrícula do Membro de Time 1" onChange={handlerQuarteto} />
-                    <Input className="teamMates" id="teamMateVolley2Id" placeholder="Matrícula do Membro de Time 2" onChange={handlerQuarteto} />
-                    <Input className="teamMates" id="teamMateVolley3Id" placeholder="Matrícula do Membro de Time 3" onChange={handlerQuarteto} />
+                    <Input className="teamMates" id="teamMate1VolleyId" placeholder="Matrícula do Membro de Time 1" onChange={handlerQuarteto} />
+                    <Input className="teamMates" id="teamMate2VolleyId" placeholder="Matrícula do Membro de Time 2" onChange={handlerQuarteto} />
+                    <Input className="teamMates" id="teamMate3VolleyId" placeholder="Matrícula do Membro de Time 3" onChange={handlerQuarteto} />
                 </div>
                 
             )}

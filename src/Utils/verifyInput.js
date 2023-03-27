@@ -27,38 +27,40 @@ export default function verifyInput(dados, _requiredFields) {
 
     let teamsValidation = {};
 
-    if ( dados.subscription.volley.teams ) {
+    if ( dados.subscription.volley.teams  && dados.subscription.volley["teamMate1Id"]) {
         for (let i = 1; i <= 3; i++) {
             teamsValidation[`teamMateVolley${i}Id`] = dados.subscription.volley[`teamMate${i}Id`];
         }
     }
 
-    if ( dados.subscription.volley.doubles ) {
+    if ( dados.subscription.volley.doubles && dados.subscription.volley.pairId ) {
         teamsValidation["pairIdVolley"] = dados.subscription.volley.pairId;
     }
 
-    if ( dados.subscription.tableTennis.doubles) {
+    if ( dados.subscription.tableTennis.doubles && dados.subscription.tableTennis.pairId ) {
         teamsValidation["pairIdTableTennis"] = dados.subscription.tableTennis.pairId;
     }
     
-    if ( dados.subscription.soccer.teams ) {
+    if ( dados.subscription.soccer.teams && dados.subscription.soccer["teamMate1Id"]) {
         for (let i = 1; i <= 4; i++) {
             teamsValidation[`teamMate${i}SoccerId`] = dados.subscription.soccer[`teamMate${i}Id`];
         }
     }    
 
-    if ( dados.subscription.dodgeball.teams ) {
+    if ( dados.subscription.dodgeball.teams && dados.subscription.dodgeball["teamMate1Id"] ) {
         for (let i = 1; i <= 9; i++) {
             teamsValidation[`teamMate${i}DodgeballId`] = dados.subscription.dodgeball[`teamMate${i}Id`];
         }
     }
 
-    if ( dados.subscription.domino.doubles ) {
+    if ( dados.subscription.domino.doubles && dados.subscription.domino["pairId"]) {
         teamsValidation["pairIdDomino"] = dados.subscription.domino["pairId"];
     }
 
-    if ( dados.subscription.athletics.relay ) {
-        teamsValidation["pairIdRelay"] = dados.subscription.athletics["pairId"];
+    if ( dados.subscription.athletics.relay && dados.subscription.athletics["teamMate1Id"]) {
+        for (let i = 1; i <= 3; i++) {
+            teamsValidation[`teamMate${i}RelayId`] = dados.subscription.athletics[`teamMate${i}Id`];
+        }
     }
 
     for (const field in teamsValidation) {

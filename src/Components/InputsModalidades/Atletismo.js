@@ -68,10 +68,11 @@ const Atletismo = () => {
             Valor: btnCorridaRevezamento,
         });
     };
+
     const handlerInput = (event) => {
         DataContext._currentValue({
             Modalidade: "athletics",
-            SubModalidade: "pairId",
+            SubModalidade: event.target.id.replace("Relay", ""),
             Valor: event.target.value,
         });
     };
@@ -143,7 +144,14 @@ const Atletismo = () => {
                 </div>
             </div>
             {nomedadupla && (
-                <Input id="pairIdRelay" placeholder={"Matrícula da Dupla"} onChange={handlerInput} />
+                <div>
+                    <h2 className="subdiv">Time Revezamento</h2>
+                    <p>Preencha as matrículas dos demais membros do time</p>
+
+                    <Input id="teamMate1RelayId" placeholder={"Matrícula do Membro de Time 1"} onChange={handlerInput} />
+                    <Input id="teamMate2RelayId" placeholder={"Matrícula do Membro de Time 2"} onChange={handlerInput} />
+                    <Input id="teamMate3RelayId" placeholder={"Matrícula do Membro de Time 3"} onChange={handlerInput} />
+                </div>
             )}
         </div>
     );

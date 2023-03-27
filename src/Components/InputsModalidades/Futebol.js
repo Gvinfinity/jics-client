@@ -19,19 +19,18 @@ const Futebol = () => {
             <h2 className="subdiv">Equipe</h2>
             <Input className="teamName" id="teamNameSoccer" placeholder="Nome da Equipe" onChange={handler} />
 
-            <h2 className="subdiv">Time Titular</h2>
+            <h2 className="subdiv">Time</h2>
+            <p>Preencha as matrículas dos demais membros do time</p>
 
-            <Input className="teamMates" id="teamMateSoccer1Id" placeholder="Matrícula do Membro de Time 1" onChange={handler} />
-            <Input className="teamMates" id="teamMateSoccer2Id" placeholder="Matrícula do Membro de Time 2" onChange={handler} />
-            <Input className="teamMates" id="teamMateSoccer3Id" placeholder="Matrícula do Membro de Time 3" onChange={handler} />
-            <Input className="teamMates" id="teamMateSoccer4Id" placeholder="Matrícula do Membro de Time 4" onChange={handler} />
-            
-            <h2 className="subdiv">Time Reserva</h2>
-            <Input className="teamReserves" id="teamReserveSoccer1" placeholder="Matrícula do Reserva de Time 1" onChange={handler} />
-            <Input className="teamReserves" id="teamReserveSoccer2" placeholder="Matrícula do Reserva de Time 2" onChange={handler} />
-            <Input className="teamReserves" id="teamReserveSoccer3" placeholder="Matrícula do Reserva de Time 3" onChange={handler} />
-            <Input className="teamReserves" id="teamReserveSoccer4" placeholder="Matrícula do Reserva de Time 4" onChange={handler} />
-            <Input className="teamReserves" id="teamReserveSoccer5" placeholder="Matrícula do Reserva de Time 5" onChange={handler} />
+            <Input className="teamMates" id="teamMate1SoccerId" placeholder="Matrícula do Membro de Time 1*" onChange={handler} />
+            <Input className="teamMates" id="teamMate2SoccerId" placeholder="Matrícula do Membro de Time 2*" onChange={handler} />
+            <Input className="teamMates" id="teamMate3SoccerId" placeholder="Matrícula do Membro de Time 3*" onChange={handler} />
+            <Input className="teamMates" id="teamMate4SoccerId" placeholder="Matrícula do Membro de Time 4*" onChange={handler} />
+            <Input className="teamMates" id="teamMate5SoccerId" placeholder="Matrícula do Membro de Time 5" onChange={handler} />
+            <Input className="teamMates" id="teamMate6SoccerId" placeholder="Matrícula do Membro de Time 6" onChange={handler} />
+            <Input className="teamMates" id="teamMate7SoccerId" placeholder="Matrícula do Membro de Time 7" onChange={handler} />
+            <Input className="teamMates" id="teamMate8SoccerId" placeholder="Matrícula do Membro de Time 8" onChange={handler} />
+            <Input className="teamMates" id="teamMate9SoccerId" placeholder="Matrícula do Membro de Time 9" onChange={handler} />
         </div>
     );
 };

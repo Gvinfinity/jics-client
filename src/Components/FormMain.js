@@ -1,5 +1,5 @@
 import React, { useState, createContext } from "react";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import Select from "react-select";
 
 import Modalidades from "./Modalidades";
@@ -14,7 +14,6 @@ import JogosEle from "./InputsModalidades/JogosEle";
 
 import verifyInput from "../Utils/verifyInput";
 
-import "react-toastify/dist/ReactToastify.css";
 import "./FormMain.css";
 
 let Data = "Sem dado";
@@ -45,11 +44,11 @@ const dados = {
             teamMate2Id: "",
             teamMate3Id: "",
             teamMate4Id: "",
-            teamReserve1: "",
-            teamReserve2: "",
-            teamReserve3: "",
-            teamReserve4: "",
-            teamReserve5: "",
+            teamMate5Id: "",
+            teamMate6Id: "",
+            teamMate7Id: "",
+            teamMate8Id: "",
+            teamMate9Id: "",
         },
 
         dodgeball: {
@@ -87,7 +86,9 @@ const dados = {
             sprint50: false,
             sprint100: false,
             relay: false,
-            pairId: "",
+            teamMate1Id: "",
+            teamMate2Id: "",
+            teamMate3Id: "",
             longJump: false,
             highJump: false,
             shotPut: false,
@@ -283,7 +284,16 @@ const FormMain = () => {
     
                 const body = await response.json();
     
-                if ( body.error.code == "_id_") {
+                if ( response.status === 500 ) {
+                    toast.error( 
+                        <div>
+                            Houve um erro interno no servidor!<br/>
+                            Contate suporte em <a href="mailto:g.soares@ifpeopensource.com.br?subject=JICS%20Erro%Inscricao">g.soares@ifpeopensource.com.br</a>
+                        </div>,
+                        {
+                            closeOnClick: false
+                        });
+                } else if ( body.error.code == "_id_") {
                     toast.error( "O estudante já está inscrito!" );
                     const studentIdField = document.getElementById("idMain");
                     studentIdField.classList.add("shake", "wrong");
@@ -292,10 +302,12 @@ const FormMain = () => {
                     const studentIdField = document.getElementById("emailMain");
                     studentIdField.classList.add("shake", "wrong");
                 }
+                
             }
             
 
         } else {
+            toast.error("Existem campos inválidos, por favor confira as informações!");
             for ( let e in unfilled) {
                 let unfilledField = document.getElementById(unfilled[e]);
                 if (["courseMain", "sexMain", "termMain", "learningModelMain"].indexOf(unfilled[e]) >= 0) {
@@ -307,7 +319,6 @@ const FormMain = () => {
                     unfilledField.classList.remove("shake");
                 }, 500); 
             }
-            toast.error("Existem campos inválidos, por favor confira as informações!");
         }
         
     };
@@ -404,16 +415,6 @@ const FormMain = () => {
                 {certo.athletics && <Atletismo />}
                 {/* {certo.badminton && <Badminton />} */}
                 
-                <ToastContainer position="top-right"
-                    autoClose={5000}
-                    hideProgressBar={false}
-                    newestOnTop={true}
-                    closeOnClick
-                    rtl={false}
-                    pauseOnFocusLoss
-                    draggable
-                    pauseOnHover
-                    theme="colored"/>
                 <button type="button" disabled={!isFormFilled} className="submit" onClick={submit}>
                     Concluir
                 </button>
