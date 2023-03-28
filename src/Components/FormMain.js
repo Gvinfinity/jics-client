@@ -351,7 +351,7 @@ const FormMain = () => {
                 <input
                     className="formField"
                     id="emailMain"
-                    placeholder="Email"
+                    placeholder="Email Institucional"
                     onChange={save}
                     name="email"
                     required
