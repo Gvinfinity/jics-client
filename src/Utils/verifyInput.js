@@ -29,7 +29,7 @@ export default function verifyInput(dados, _requiredFields) {
 
     if ( dados.subscription.volley.teams  && dados.subscription.volley["teamMate1Id"]) {
         for (let i = 1; i <= 3; i++) {
-            teamsValidation[`teamMateVolley${i}Id`] = dados.subscription.volley[`teamMate${i}Id`];
+            teamsValidation[`teamMate${i}VolleyId`] = dados.subscription.volley[`teamMate${i}Id`];
         }
     }
 
