@@ -293,21 +293,35 @@ const FormMain = () => {
                         {
                             closeOnClick: false
                         });
-                } else if ( body.error.code == "_id_") {
-                    toast.error( "O estudante já está inscrito!" );
-                    const studentIdField = document.getElementById("idMain");
-                    studentIdField.classList.add("shake", "wrong");
-                } else if ( body.error.code == "students_email_key") {
-                    toast.error( "O estudante já está inscrito!" );
-                    const studentIdField = document.getElementById("emailMain");
-                    studentIdField.classList.add("shake", "wrong");
+                } else if ( response.status === 400 ) {
+                    if ( body.error.code == "_id_") {
+                        toast.error( "O estudante já efetuou sua inscrição!" );
+                        const studentIdField = document.getElementById("idMain");
+                        studentIdField.classList.add("shake", "wrong");
+                    } else if ( body.error.code == "students_email_key") {
+                        toast.error( "O estudante já efetuou sua inscrição!" );
+                        const studentIdField = document.getElementById("emailMain");
+                        studentIdField.classList.add("shake", "wrong");
+                    }
+                } else if ( response.status === 418 ) {
+                    toast.warning( 
+                        <div>
+                            Algumas modalidades solicitadas ultrapassaram
+                            o limite estipulado para seu curso!
+                        </div> 
+                    );
+                    console.log(body.limited);
+                    for (let e in body.limited) {
+                        const sportField = document.getElementById(e);
+                        sportField.add("overfull");
+                    }
                 }
                 
             }
             
 
         } else {
-            toast.error("Existem campos inválidos, por favor confira as informações!");
+            toast.error("Existem campos inválidos, por favor verifique os dados!");
             for ( let e in unfilled) {
                 let unfilledField = document.getElementById(unfilled[e]);
                 if (["courseMain", "sexMain", "termMain", "learningModelMain"].indexOf(unfilled[e]) >= 0) {
