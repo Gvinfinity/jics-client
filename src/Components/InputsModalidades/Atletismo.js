@@ -85,6 +85,7 @@ const Atletismo = () => {
                 <div>
                     <input
                         className="checkbox-round"
+                        id="sprint50"
                         type="checkbox"
                         name="individual"
                         value="true"
@@ -95,6 +96,7 @@ const Atletismo = () => {
                 <div>
                     <input
                         className="checkbox-round"
+                        id="sprint100"
                         type="checkbox"
                         name="dupla"
                         value="true"
@@ -105,6 +107,7 @@ const Atletismo = () => {
                 <div>
                     <input
                         className="checkbox-round"
+                        id="relay"
                         type="checkbox"
                         name="dupla"
                         value="true"
@@ -115,6 +118,7 @@ const Atletismo = () => {
                 <div>
                     <input
                         className="checkbox-round"
+                        id="longJump"
                         type="checkbox"
                         name="individual"
                         value="true"
@@ -125,6 +129,7 @@ const Atletismo = () => {
                 <div>
                     <input
                         className="checkbox-round"
+                        id="highJump"
                         type="checkbox"
                         name="dupla"
                         value="true"
@@ -135,6 +140,7 @@ const Atletismo = () => {
                 <div>
                     <input
                         className="checkbox-round"
+                        id="shotPut"
                         type="checkbox"
                         name="individual"
                         value="true"

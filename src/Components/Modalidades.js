@@ -101,7 +101,7 @@ const Modalidades = (props) => {
                         <span className="itemText">Vôlei</span>
                     </li>
                     <li className="item" onClick={clickFutebol}>
-                        <span className="checkbox">
+                        <span id="soccer" className="checkbox">
                             <i
                                 className={
                                     (stateFutebol && "  fa-solid fa-check ") ||
@@ -145,7 +145,7 @@ const Modalidades = (props) => {
                         <span className="itemText">Xadrez</span>
                     </li>
                     <li className="item" onClick={clickDomino}>
-                        <span className="checkbox">
+                        <span id="domino" className="checkbox">
                             <i
                                 className={
                                     (stateDomino && "  fa-solid fa-check ") ||

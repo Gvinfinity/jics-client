@@ -45,6 +45,7 @@ const Tenis = () => {
                 <div>
                     <input
                         className="checkbox-round"
+                        id="tableTennisSingle"
                         type="checkbox"
                         name="individual"
                         value="true"
@@ -55,6 +56,7 @@ const Tenis = () => {
                 <div>
                     <input
                         className="checkbox-round"
+                        id="tableTennisDoubles"
                         type="checkbox"
                         name="dupla"
                         value="true"

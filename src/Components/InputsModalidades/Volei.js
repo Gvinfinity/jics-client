@@ -56,6 +56,7 @@ const Volei = () => {
                 <div>
                     <input
                         className="checkbox-round"
+                        id="volleyDoubles"
                         type="checkbox"
                         name="dupla"
                         value="true"
@@ -66,6 +67,7 @@ const Volei = () => {
                 <div>
                     <input
                         className="checkbox-round"
+                        id="volleyTeams"
                         type="checkbox"
                         name="quarteto"
                         value="true"

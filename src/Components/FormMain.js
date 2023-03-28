@@ -312,8 +312,8 @@ const FormMain = () => {
                     );
                     console.log(body.limited);
                     for (let e in body.limited) {
-                        const sportField = document.getElementById(e);
-                        sportField.add("overfull");
+                        const sportField = document.getElementById(body.limited[e]);
+                        sportField.classList.add("overfull");
                     }
                 }
                 

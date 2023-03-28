@@ -44,6 +44,7 @@ const JogosEle = () => {
                 <div>
                     <input
                         className="checkbox-round"
+                        id="FIFA23"
                         type="checkbox"
                         name="individual"
                         value="true"
