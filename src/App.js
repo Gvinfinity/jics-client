@@ -10,8 +10,8 @@ const App = () => {
     return (
         <div className="container">
             <ReactLogo className='logo'/>
-            <h1 className="mainTitle">Inscrições para o jics </h1>
-            <h2 className="mainSubtitle">inscrições do dia ** até o dia **</h2>
+            <h1 className="mainTitle">Inscrições para o JICs </h1>
+            <h2 className="mainSubtitle">Inscrições disponíveis do dia 30/03 até o dia 02/04!</h2>
             <FormMain />
             <ToastContainer position="top-right"
                 autoClose={5000}
