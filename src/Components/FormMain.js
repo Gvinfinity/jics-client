@@ -315,6 +315,8 @@ const FormMain = () => {
                         const sportField = document.getElementById(body.limited[e]);
                         sportField.classList.add("overfull");
                     }
+                } else if ( response.status === 200 ) {
+                    toast.success("Estudante adicionado com sucesso!");
                 }
                 
             }
