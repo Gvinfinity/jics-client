@@ -1,90 +1,80 @@
 @font-face {
   font-family: Designer;
-  src: url("../public/Fonts/Designer.otf");
+  src: url('../public/Fonts/Designer.otf');
 }
-
-
 
 @media only screen and (min-width: 1024px) {
-  .container{
-  width:80%;
-  min-height:80vh;
-  margin: 3rem auto 3rem auto;
-  background-color:#F3F3F3;
-  border-radius: 1rem;
-  display:block;
-  padding: 4rem;
-}
-.mainTitle{
-  text-align:center;
-  padding-top: 2rem;
-  font-family: Designer;
-  font-weight: 1;
-  font-size:3.5rem;
-  margin-bottom: 0;;
-}
+  .container {
+    width: 80%;
+    min-height: 80vh;
+    margin: 3rem auto;
+    background-color: #f3f3f3;
+    border-radius: 1rem;
+    display: block;
+    padding: 4rem;
+  }
 
-.mainSubtitle{
-  text-align:center;
-  font-family: Designer;
-  font-weight: 1;
-}
+  .mainTitle {
+    text-align: center;
+    padding-top: 2rem;
+    font-family: Designer;
+    font-weight: 1;
+    font-size: 3.5rem;
+    margin-bottom: 0;
+  }
 
-.logo {
-  height: 10em;
-  display: block;
-  margin: 0 auto;
-}
+  .mainSubtitle {
+    text-align: center;
+    font-family: Designer;
+    font-weight: 1;
+  }
 
 }
+
 @media only screen and (min-width: 320px) and (max-width: 480px) {
- 
-.container{
-  width:98vw;
-  /* min-height:100vh; */
-  margin: 0 auto 3rem auto;
-  background-color:#F3F3F3;
-  border-radius: 1rem;
-  display:block;
-  position:relative;
-  padding-bottom:4rem;
-}
+  .container {
+    width: 98vw;
 
-.volei{
-  margin-top:4rem;
-}
-.mainTitle{
-  text-align:center;
-  padding-top: 8rem;
-  font-family: Designer;
-  font-weight: 1;
-  font-size:2.2rem;
-  margin-bottom: 0;;
-}
+    /* min-height:100vh; */
+    margin: 0 auto;
+    background-color: #f3f3f3;
+    border-radius: 1rem;
+    display: block;
+    position: relative;
+    padding-bottom: 3rem;
+  }
 
-.mainSubtitle{
-  text-align:center;
-  font-family: Designer;
-  font-weight: 1;
-  font-size:1rem;
-  width:90vw;
+  .volei {
+    margin-top: 4rem;
+  }
 
-}
+  .mainTitle {
+    text-align: center;
+    padding-top: 8rem;
+    font-family: Designer;
+    font-weight: 1;
+    font-size: 2.2rem;
+    margin-bottom: 0;
+  }
 
-.logo {
-  height: 10em;
-  display: block;
-  margin: 0 auto;
-  position:relative;
-  top:6rem;
+  .mainSubtitle {
+    text-align: center;
+    font-family: Designer;
+    font-weight: 1;
+    font-size: 1rem;
+    width: 90vw;
+    margin: 0 auto;
+  }
 
-
-}
-
+  .logo {
+    position: relative;
+    top: 6rem;
+  }
 }
 
 .logo {
-  height: 10em;
+  width: 15em;
+  height: 15em;
   display: block;
   margin: 0 auto;
 }

@@ -1,127 +1,161 @@
-import React, { useState, createContext } from 'react';
-import './FormMain.css';
-import Modalidades from './Modalidades';
-import Volei from './InputsModalidades/Volei';
-import Futebol from './InputsModalidades/Futebol';
-import Queimada from './InputsModalidades/Queimada';
-import Tenis from './InputsModalidades/Tenis';
-import Domino from './InputsModalidades/Domino';
-import Badminton from './InputsModalidades/Badminton';
-import Atletismo from './InputsModalidades/Atletismo';
-import JogosEle from './InputsModalidades/JogosEle';
-import Select from 'react-select';
-let Data = 'Sem dado';
+import React, { useState, createContext } from "react";
+import { toast } from "react-toastify";
+import Select from "react-select";
+
+import Modalidades from "./Modalidades";
+import Volei from "./InputsModalidades/Volei";
+import Futebol from "./InputsModalidades/Futebol";
+import Queimada from "./InputsModalidades/Queimada";
+import Tenis from "./InputsModalidades/Tenis";
+import Domino from "./InputsModalidades/Domino";
+// import Badminton from "./InputsModalidades/Badminton";
+import Atletismo from "./InputsModalidades/Atletismo";
+import JogosEle from "./InputsModalidades/JogosEle";
+
+import verifyInput from "../Utils/verifyInput";
+
+import "./FormMain.css";
+
+let Data = "Sem dado";
 
 const dados = {
-    Nome: '',
-    Email: '',
-    Curso: '',
-    Periodo: '',
-    Modelo: '',
-    Sexo: '',
-    Modalidades: {
-        Volei: {
-            Dupla: false,
-            Quarteto: false,
-            NomeDaDupla: '',
-            NomeDaEquipe: '',
+    name: "",
+    email: "",
+    id: "",
+    course: "",
+    term: "",
+    learningModel: "",
+    sex: "",
+    subscription: {
+        volley: {
+            doubles: false,
+            teams: false,
+            pairId: "",
+            teamName: "",
+            teamMate1Id: "",
+            teamMate2Id: "",
+            teamMate3Id: "",
         },
 
-        Futebol: {
-            Equipe: false,
-            NomeDaEquipe: '',
+        soccer: {
+            teams: false,
+            teamName: "",
+            teamMate1Id: "",
+            teamMate2Id: "",
+            teamMate3Id: "",
+            teamMate4Id: "",
+            teamMate5Id: "",
+            teamMate6Id: "",
+            teamMate7Id: "",
+            teamMate8Id: "",
+            teamMate9Id: "",
         },
 
-        Queimada: {
-            Equipe: false,
-            NomeDaEquipe: '',
+        dodgeball: {
+            teams: false,
+            teamName: "",
+            teamMate1Id: "",
+            teamMate2Id: "",
+            teamMate3Id: "",
+            teamMate4Id: "",
+            teamMate5Id: "",
+            teamMate6Id: "",
+            teamMate7Id: "",
+            teamMate8Id: "",
+            teamMate9Id: "",
         },
 
-        Tenis: {
-            Individual: false,
-            Dupla: false,
-            NomeDaDupla: '',
+        tableTennis: {
+            single: false,
+            doubles: false,
+            pairId: "",
         },
-        Xadrez: false,
-
-        Domino: {
-            Dupla: false,
-            NomeDaDupla: '',
+        chess: false,
+        domino: {
+            doubles: false,
+            pairId: "",
         },
 
-        JogosEle: {
+        electronic: {
             FIFA23: false,
-            Tetris: false,
+            // Tetris: false,
             JustDance: false,
         },
 
-        Atletismo: {
-            Corrida50: false,
-            Corrida100: false,
-            CorridaEmRevezamento: false,
-            DuplaRevezamento: '',
-            SaltoDistancia: false,
-            SaltoAltura: false,
-            Arremesso: false,
+        athletics: {
+            sprint50: false,
+            sprint100: false,
+            relay: false,
+            teamMate1Id: "",
+            teamMate2Id: "",
+            teamMate3Id: "",
+            longJump: false,
+            highJump: false,
+            shotPut: false,
         },
-        Badminton: {
-            Individual: false,
-            Dupla: false,
-            NomeDaDupla: '',
-        },
+        // badminton: {
+        //     single: false,
+        //     doubles: false,
+        //     pairId: "",
+        // },
     },
 };
 
 const options = {
     cursos: [
-        { name: 'Curso', value: 'meca', label: 'Mecatrônica' },
-        { name: 'Curso', value: 'seg', label: 'Segurança do Trabalho' },
-        { name: 'Curso', value: 'edif', label: 'Edificações' },
-        { name: 'Curso', value: 'eng', label: 'Engenharia Mecânica' },
+        { name: "course", value: "MECA", label: "Mecatrônica" },
+        { name: "course", value: "SEG", label: "Segurança do Trabalho" },
+        { name: "course", value: "EDIF", label: "Edificações" },
+        { name: "course", value: "ENG", label: "Engenharia Mecânica" },
     ],
     sexos: [
-        { name: 'Sexo', value: 'man', label: 'Homem' },
-        { name: 'Sexo', value: 'woman', label: 'Mulher' },
+        { name: "sex", value: "MAN", label: "Masculino" },
+        { name: "sex", value: "WOMAN", label: "Feminino" },
     ],
     modelos: [
-        { name: 'Modelo', value: 'int', label: 'Integrado' },
-        { name: 'Modelo', value: 'sub', label: 'Subsequente' },
-        { name: 'Modelo', value: 'sup', label: 'Superior' },
+        { name: "learningModel", value: "INT", label: "Integrado" },
+        { name: "learningModel", value: "SUB", label: "Subsequente" },
+        { name: "learningModel", value: "SUP", label: "Superior" },
     ],
     periodos: [],
 };
 
 for (var i = 1; i <= 10; i++) {
     options.periodos.push({
-        name: 'Periodo',
+        name: "term",
         value: String(i),
-        label: String(i) + '°',
+        label: String(i) + "°",
     });
 }
 
 const styles = {
-    control: (baseStyles, state) => ({
+    control: (baseStyles, _state) => ({
         ...baseStyles,
-        backgroundColor: '#E2E8F0',
-        color: '#7a7a7a',
-        borderRadius: '1.1rem',
-        border: 'none',
-        marginTop: '0.8rem',
-        fontFamily: 'ComfoortaMidi',
+        backgroundColor: "#E2E8F0",
+        color: "#7a7a7a",
+        borderRadius: "1.1rem",
+        border: "none",
+        marginTop: "0.8rem",
+        fontFamily: "ComfoortaMidi",
     }),
-    menuList: (baseStyles, state) => ({
+    menuList: (baseStyles, _state) => ({
         ...baseStyles,
-        backgroundColor: '#E2E8F0',
-        fontFamily: 'ComfoortaMidi',
+        backgroundColor: "#E2E8F0",
+        fontFamily: "ComfoortaMidi",
     }),
 };
 
+const requiredFields = ["name", "email", "id", "course", "term", "learningModel", "sex"];
+
 export const DataContext = createContext((newData) => {
     const { Modalidade, SubModalidade, Valor } = newData;
-    dados.Modalidades[Modalidade][SubModalidade] = Valor;
+    dados.subscription[Modalidade][SubModalidade] = Valor;
 });
 
-const FormMain = (props) => {
+const FormMain = () => {
+
+    const [isFormFilled, setIsFormFilled] = useState(false);
+
     const dropdowns = {
         curso: {
             selectedOption: false,
@@ -147,86 +181,201 @@ const FormMain = (props) => {
 
     let clicked = false;
     const [btnModalidade, setModalidade] = useState(clicked);
+
     const [jogos, setjogos] = useState({
-        titulo: 'o errado aqui',
-        Volei: false,
-        Futebol: false,
-        Queimada: false,
-        Tenis: false,
-        Xadrez: false,
-        Badminton: false,
-        Domino: false,
-        JogosEle: false,
-        Atletismo: false,
+        titulo: "o errado aqui",
+        volley: false,
+        soccer: false,
+        dodgeball: false,
+        tableTennis: false,
+        chess: false,
+        // badminton: false,
+        domino: false,
+        electronic: false,
+        athletics: false,
     });
     const certo = {
-        Titulo: 'O certo aqui',
-        Volei: jogos.Volei,
-        Futebol: jogos.Futebol,
-        Queimada: jogos.Queimada,
-        Tenis: jogos.Tenis,
-        Xadrez: jogos.Xadrez,
-        Badminton: jogos.Badminton,
-        Domino: jogos.Domino,
-        JogosEle: jogos.JogosEle,
-        Atletismo: jogos.Atletismo,
+        Titulo: "O certo aqui",
+        volley: jogos.volley,
+        soccer: jogos.soccer,
+        dodgeball: jogos.dodgeball,
+        tableTennis: jogos.tableTennis,
+        chess: jogos.chess,
+        // badminton: jogos.badminton,
+        domino: jogos.domino,
+        electronic: jogos.electronic,
+        athletics: jogos.athletics,
     };
 
     const addJogos = (objJogos) => {
         setjogos({
-            Volei: objJogos.Volei,
-            Futebol: objJogos.Futebol,
-            Queimada: objJogos.Queimada,
-            Tenis: objJogos.Tenis,
-            Xadrez: objJogos.Xadrez,
-            Badminton: objJogos.Badminton,
-            Domino: objJogos.Domino,
-            JogosEle: objJogos.JogosEle,
-            Atletismo: objJogos.Atletismo,
+            volley: objJogos.volley,
+            soccer: objJogos.soccer,
+            dodgeball: objJogos.dodgeball,
+            tableTennis: objJogos.tableTennis,
+            chess: objJogos.chess,
+            // badminton: objJogos.badminton,
+            domino: objJogos.domino,
+            electronic: objJogos.electronic,
+            athletics: objJogos.athletics,
         });
+        dados.subscription.soccer.teams = objJogos.soccer;
+        dados.subscription.dodgeball.teams = objJogos.dodgeball;
+        dados.subscription.chess = objJogos.chess;
+        dados.subscription.domino.doubles = objJogos.domino;
     };
 
     const save = (event) => {
         const { name, value } = event.target || event;
         dados[name] = value;
-        // console.log(dados);
+        setIsFormFilled(requiredFields.every((value) => dados[value] != ""));
     };
 
-    const eventClick = (event) => {
+    const eventClick = () => {
         setModalidade(!btnModalidade);
-        dados.Modalidades.Futebol.Equipe = certo.Futebol;
-        dados.Modalidades.Queimada.Equipe = certo.Queimada;
-        dados.Modalidades.Xadrez = certo.Xadrez;
-        dados.Modalidades.Domino.Dupla = certo.Domino;
     };
 
-    const submit = () => {
-        console.log(dados);
+    const submit = async () => {
+        
+        const unfilled = verifyInput(dados, requiredFields);
+        const l = document.getElementsByClassName("wrong");
+
+        if (l.length > 0) {
+            const length = l.length;
+            for ( let i = 0; i < length; i++ ) {
+                l[0].classList.remove("wrong");
+            }
+        }
+
+        const teamSports = [
+            dados.subscription.volley.teams && certo.volley,
+            dados.subscription.volley.doubles && certo.volley,
+            dados.subscription.tableTennis.doubles && certo.tableTennis,
+            dados.subscription.soccer.teams,
+            dados.subscription.dodgeball.teams,
+        ].reduce((memory, value) => memory + value, 0);
+
+        const individualSports = [
+            dados.subscription.tableTennis.single && certo.tableTennis,
+            certo.athletics,
+            certo.electronic,
+            dados.subscription.chess,
+            dados.subscription.domino.doubles,
+        ].reduce((memory, value) => memory + value, 0);
+
+        if(unfilled.length === 0) {
+            if ( teamSports > 3 ) {
+                toast.error("O número de esportes coletivos excedeu o limite de 3, por favor remova!");
+            } else if ( teamSports + individualSports > 6 ) {
+                toast.error("O número de esportes total excedeu o limite de 6, por favor remova!");
+            } else {
+                const response = await toast.promise(
+                    fetch("https://api.jicsifpe.com.br:25565/register",{
+                        method: "POST",
+                        mode: "cors",
+                        body: JSON.stringify(dados),
+                        headers: new Headers({"Content-Type": "application/json"})
+                    }),
+                    {
+                        pending: "Adicionando inscrição...",
+                        error: "Incapaz de conectar ao servidor, tente novamente mais tarde!"
+                    }
+                );
+    
+                const body = await response.json();
+    
+                if ( response.status === 500 ) {
+                    toast.error( 
+                        <div>
+                            Houve um erro interno no servidor!<br/>
+                            Contate suporte em <a href="mailto:g.soares@ifpeopensource.com.br?subject=JICS%20Erro%Inscricao">g.soares@ifpeopensource.com.br</a>
+                        </div>,
+                        {
+                            closeOnClick: false
+                        });
+                } else if ( response.status === 400 ) {
+                    if ( body.error.code == "_id_") {
+                        toast.error( "O estudante já efetuou sua inscrição!" );
+                        const studentIdField = document.getElementById("idMain");
+                        studentIdField.classList.add("shake", "wrong");
+                    } else if ( body.error.code == "students_email_key") {
+                        toast.error( "O estudante já efetuou sua inscrição!" );
+                        const studentIdField = document.getElementById("emailMain");
+                        studentIdField.classList.add("shake", "wrong");
+                    }
+                } else if ( response.status === 418 ) {
+                    toast.warning( 
+                        <div>
+                            Algumas modalidades solicitadas ultrapassaram
+                            o limite estipulado para seu curso!
+                        </div> 
+                    );
+                    console.log(body.limited);
+                    for (let e in body.limited) {
+                        const sportField = document.getElementById(body.limited[e]);
+                        sportField.classList.add("overfull");
+                    }
+                } else if ( response.status === 200 ) {
+                    toast.success("Estudante adicionado com sucesso!");
+                }
+                
+            }
+            
+
+        } else {
+            toast.error("Existem campos inválidos, por favor verifique os dados!");
+            for ( let e in unfilled) {
+                let unfilledField = document.getElementById(unfilled[e]);
+                if (["courseMain", "sexMain", "termMain", "learningModelMain"].indexOf(unfilled[e]) >= 0) {
+                    unfilledField = unfilledField.getElementsByTagName("div")[0];
+                }
+
+                unfilledField.classList.add("shake", "wrong");
+                setTimeout(() => {
+                    unfilledField.classList.remove("shake");
+                }, 500); 
+            }
+        }
+        
     };
 
     return (
         <DataContext.Provider value={Data}>
             <form className="containerHeader">
                 <input
-                    className="mainName formField"
+                    className="formField"
+                    id="nameMain"
                     placeholder="Nome"
                     onChange={save}
-                    name="Nome"
+                    name="name"
+                    required
                 />
                 <input
-                    className="mainEmail formField"
-                    placeholder="Email"
+                    className="formField"
+                    id="emailMain"
+                    placeholder="Email Institucional"
                     onChange={save}
-                    name="Email"
+                    name="email"
+                    required
+                />
+                <input
+                    className="formField"
+                    id="idMain"
+                    placeholder="Matrícula"
+                    onChange={save}
+                    name="id"
+                    required
                 />
                 <div className="containerForm">
                     <Select
                         defaultValue={dropdowns.curso.selectedOption}
                         onChange={(dropdowns.curso.setSelectedOption, save)}
                         options={dropdowns.curso.options}
-                        className="mainCourse flexItem"
+                        className="flexItem"
+                        id="courseMain"
                         placeholder="Curso"
                         styles={styles}
+                        required
                         hideSelectedOptions
                     />
                     <Select
@@ -235,8 +384,10 @@ const FormMain = (props) => {
                         options={dropdowns.modelo.options}
                         styles={styles}
                         hideSelectedOptions
-                        className="mainModelo flexItem"
-                        placeholder="Modelo"
+                        required
+                        className="flexItem"
+                        id="learningModelMain"
+                        placeholder="Modelo de Ensino"
                     />
                     <div className="break"></div>
                     <Select
@@ -245,7 +396,9 @@ const FormMain = (props) => {
                         options={dropdowns.periodo.options}
                         styles={styles}
                         hideSelectedOptions
-                        className="mainPeriodo flexItem"
+                        required
+                        className="flexItem"
+                        id="termMain"
                         placeholder="Período"
                     />
                     <Select
@@ -254,8 +407,10 @@ const FormMain = (props) => {
                         options={dropdowns.sexo.options}
                         styles={styles}
                         hideSelectedOptions
-                        className="mainSexo flexItem"
-                        placeholder="Sexo Biológico"
+                        required
+                        className="flexItem"
+                        id="sexMain"
+                        placeholder="Naipe"
                     />
                 </div>
                 <button
@@ -267,15 +422,16 @@ const FormMain = (props) => {
                     Modalidades
                 </button>
                 <Modalidades show={btnModalidade} setar={addJogos} />
-                {certo.Volei && <Volei />}
-                {certo.Futebol && <Futebol />}
-                {certo.Queimada && <Queimada />}
-                {certo.Tenis && <Tenis />}
-                {certo.Domino && <Domino />}
-                {certo.JogosEle && <JogosEle />}
-                {certo.Atletismo && <Atletismo />}
-                {certo.Badminton && <Badminton />}
-                <button type="button" className="submit" onClick={submit}>
+                {certo.volley && <Volei />}
+                {certo.soccer && <Futebol />}
+                {certo.dodgeball && <Queimada />}
+                {certo.tableTennis && <Tenis />}
+                {certo.domino && <Domino />}
+                {certo.electronic && <JogosEle />}
+                {certo.athletics && <Atletismo />}
+                {/* {certo.badminton && <Badminton />} */}
+                
+                <button type="button" disabled={!isFormFilled} className="submit" onClick={submit}>
                     Concluir
                 </button>
             </form>

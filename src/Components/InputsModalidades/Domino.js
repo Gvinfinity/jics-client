@@ -1,14 +1,14 @@
-import React from 'react';
-import Input from '../Input';
-import { DataContext } from '../FormMain';
+import React from "react";
+import Input from "../Input";
+import { DataContext } from "../FormMain";
 
-import './Domino.css';
+import "./Domino.css";
 
 const Domino = () => {
     const handlerInputDupla = (event) => {
         DataContext._currentValue({
-            Modalidade: 'Domino',
-            SubModalidade: 'NomeDaDupla',
+            Modalidade: "domino",
+            SubModalidade: "pairId",
             Valor: event.target.value,
         });
     };
@@ -16,8 +16,8 @@ const Domino = () => {
     return (
         <div>
             <h1 className="header">Domino</h1>
-            <div class="divider"></div>
-            <Input placeholder="Nome da Dupla" onChange={handlerInputDupla} />
+            <div className="divider"></div>
+            <Input id="pairIdDomino" placeholder="Matrícula da Dupla" onChange={handlerInputDupla} />
         </div>
     );
 };

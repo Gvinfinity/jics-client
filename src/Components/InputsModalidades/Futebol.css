@@ -1,12 +1,20 @@
-.header{
-margin-top:2rem;
-margin-bottom:0.4rem;
-font-size: 2rem;
-text-align: center;
+.header {
+  margin-top: 2rem;
+  margin-bottom: 0.4rem;
+  font-size: 2rem;
+  text-align: center;
 }
 
-.divider{
-    height:1px;
-    width:100%;
-    background-color: rgb(75, 75, 75);
+.divider {
+  height: 1px;
+  width: 100%;
+  background-color: rgb(75 75 75);
+}
+
+.subdiv {
+  margin-top: 1.5rem;
+  text-align: left;
+  font-size: 1rem;
+  text-decoration: underline;
+  text-underline-offset: 0.5rem;
 }

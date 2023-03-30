@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
-import Input from '../Input';
-import './Tenis.css';
-import { DataContext } from '../FormMain';
+import React, { useState } from "react";
+import Input from "../Input";
+import "./Tenis.css";
+import { DataContext } from "../FormMain";
 
 const Tenis = () => {
     const [nomedadupla, setnomedupla] = useState();
@@ -13,8 +13,8 @@ const Tenis = () => {
     const clickindividual = () => {
         setIndividual(!btnIndividual);
         DataContext._currentValue({
-            Modalidade: 'Tenis',
-            SubModalidade: 'Individual',
+            Modalidade: "tableTennis",
+            SubModalidade: "single",
             Valor: btnIndividual,
         });
     };
@@ -23,16 +23,16 @@ const Tenis = () => {
         setDupla(!btnDupla);
         setnomedupla(btnDupla);
         DataContext._currentValue({
-            Modalidade: 'Tenis',
-            SubModalidade: 'Dupla',
+            Modalidade: "tableTennis",
+            SubModalidade: "doubles",
             Valor: btnDupla,
         });
     };
 
     const handlerInputDupla = (event) => {
         DataContext._currentValue({
-            Modalidade: 'Tenis',
-            SubModalidade: 'NomeDaDupla',
+            Modalidade: "tableTennis",
+            SubModalidade: "pairId",
             Valor: event.target.value,
         });
     };
@@ -40,11 +40,12 @@ const Tenis = () => {
     return (
         <div className="tenis">
             <h1 className="header">Tênis de Mesa</h1>
-            <div class="divider"></div>
+            <div className="divider"></div>
             <div className="tenisdata">
                 <div>
                     <input
                         className="checkbox-round"
+                        id="tableTennisSingle"
                         type="checkbox"
                         name="individual"
                         value="true"
@@ -55,6 +56,7 @@ const Tenis = () => {
                 <div>
                     <input
                         className="checkbox-round"
+                        id="tableTennisDoubles"
                         type="checkbox"
                         name="dupla"
                         value="true"
@@ -65,7 +67,8 @@ const Tenis = () => {
             </div>
             {nomedadupla && (
                 <Input
-                    placeholder={'Nome da Dupla'}
+                    id="pairIdTableTennis"
+                    placeholder={"Matrícula da Dupla"}
                     onChange={handlerInputDupla}
                 />
             )}

@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
-import Input from '../Input';
-import { DataContext } from '../FormMain';
+import React, { useState } from "react";
+import Input from "../Input";
+import { DataContext } from "../FormMain";
 
-import './Atletismo.css';
+import "./Atletismo.css";
 
 const Atletismo = () => {
     const [nomedadupla, setnomedupla] = useState();
@@ -17,8 +17,8 @@ const Atletismo = () => {
     const clickCorrida50 = () => {
         setCorrida50(!btnCorrida50);
         DataContext._currentValue({
-            Modalidade: 'Atletismo',
-            SubModalidade: 'Corrida50',
+            Modalidade: "athletics",
+            SubModalidade: "sprint50",
             Valor: btnCorrida50,
         });
     };
@@ -26,8 +26,8 @@ const Atletismo = () => {
     const clickCorrida100 = () => {
         setCorrida100(!btnCorrida100);
         DataContext._currentValue({
-            Modalidade: 'Atletismo',
-            SubModalidade: 'Corrida100',
+            Modalidade: "athletics",
+            SubModalidade: "sprint100",
             Valor: btnCorrida100,
         });
     };
@@ -35,8 +35,8 @@ const Atletismo = () => {
     const clickSaltoDist = () => {
         setSaltoDist(!btnSaltoDist);
         DataContext._currentValue({
-            Modalidade: 'Atletismo',
-            SubModalidade: 'SaltoDistancia',
+            Modalidade: "athletics",
+            SubModalidade: "longJump",
             Valor: btnSaltoDist,
         });
     };
@@ -44,8 +44,8 @@ const Atletismo = () => {
     const clickSaltoAlt = () => {
         setSaltoAlt(!btnSaltoAlt);
         DataContext._currentValue({
-            Modalidade: 'Atletismo',
-            SubModalidade: 'SaltoAltura',
+            Modalidade: "athletics",
+            SubModalidade: "highJump",
             Valor: btnSaltoAlt,
         });
     };
@@ -53,8 +53,8 @@ const Atletismo = () => {
     const clickArremesso = () => {
         setArremesso(!btnArremesso);
         DataContext._currentValue({
-            Modalidade: 'Atletismo',
-            SubModalidade: 'Arremesso',
+            Modalidade: "athletics",
+            SubModalidade: "shotPut",
             Valor: btnArremesso,
         });
     };
@@ -63,28 +63,29 @@ const Atletismo = () => {
         setCorridaRevezamento(!btnCorridaRevezamento);
         setnomedupla(btnCorridaRevezamento);
         DataContext._currentValue({
-            Modalidade: 'Atletismo',
-            SubModalidade: 'CorridaEmRevezamento',
+            Modalidade: "athletics",
+            SubModalidade: "relay",
             Valor: btnCorridaRevezamento,
         });
     };
+
     const handlerInput = (event) => {
         DataContext._currentValue({
-            Modalidade: 'Atletismo',
-            SubModalidade: 'DuplaRevezamento',
+            Modalidade: "athletics",
+            SubModalidade: event.target.id.replace("Relay", ""),
             Valor: event.target.value,
         });
-        console.log('oi');
     };
 
     return (
         <div>
             <h1 className="header">Atletismo</h1>
-            <div class="divider"></div>
+            <div className="divider"></div>
             <div className="atletismodata">
                 <div>
                     <input
                         className="checkbox-round"
+                        id="sprint50"
                         type="checkbox"
                         name="individual"
                         value="true"
@@ -95,6 +96,7 @@ const Atletismo = () => {
                 <div>
                     <input
                         className="checkbox-round"
+                        id="sprint100"
                         type="checkbox"
                         name="dupla"
                         value="true"
@@ -105,6 +107,7 @@ const Atletismo = () => {
                 <div>
                     <input
                         className="checkbox-round"
+                        id="relay"
                         type="checkbox"
                         name="dupla"
                         value="true"
@@ -115,6 +118,7 @@ const Atletismo = () => {
                 <div>
                     <input
                         className="checkbox-round"
+                        id="longJump"
                         type="checkbox"
                         name="individual"
                         value="true"
@@ -125,6 +129,7 @@ const Atletismo = () => {
                 <div>
                     <input
                         className="checkbox-round"
+                        id="highJump"
                         type="checkbox"
                         name="dupla"
                         value="true"
@@ -135,6 +140,7 @@ const Atletismo = () => {
                 <div>
                     <input
                         className="checkbox-round"
+                        id="shotPut"
                         type="checkbox"
                         name="individual"
                         value="true"
@@ -144,7 +150,14 @@ const Atletismo = () => {
                 </div>
             </div>
             {nomedadupla && (
-                <Input placeholder={'Nome da Dupla'} onChange={handlerInput} />
+                <div>
+                    <h2 className="subdiv">Time Revezamento</h2>
+                    <p>Preencha as matrículas dos demais membros do time</p>
+
+                    <Input id="teamMate1RelayId" placeholder={"Matrícula do Membro de Time 1"} onChange={handlerInput} />
+                    <Input id="teamMate2RelayId" placeholder={"Matrícula do Membro de Time 2"} onChange={handlerInput} />
+                    <Input id="teamMate3RelayId" placeholder={"Matrícula do Membro de Time 3"} onChange={handlerInput} />
+                </div>
             )}
         </div>
     );

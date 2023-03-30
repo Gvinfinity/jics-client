@@ -1,5 +1,5 @@
-import React, { useContext } from 'react';
-import jogos from '../Context/Jogos';
+import { useContext } from "react";
+import jogos from "../Context/Jogos";
 
 const Jogos = () => {
     const context = useContext(jogos);
