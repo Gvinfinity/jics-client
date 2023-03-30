@@ -270,7 +270,7 @@ const FormMain = () => {
                 toast.error("O número de esportes total excedeu o limite de 6, por favor remova!");
             } else {
                 const response = await toast.promise(
-                    fetch("http://localhost:8080/register",{
+                    fetch("https://api.jicsifpe.com.br:25565/register",{
                         method: "POST",
                         mode: "cors",
                         body: JSON.stringify(dados),
